@@ -1,0 +1,658 @@
+/* Enhanced colorful design with advanced animations */
+:root {
+  --primary: #6366f1;
+  --primary-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+  --secondary: #0ea5e9;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --warning: #f97316;
+  --danger: #ef4444;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4), 0 8px 10px -6px rgba(99, 102, 241, 0.3);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Background animation */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+/* Floating credit card animation elements */
+.credit-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.credit-particle {
+  position: absolute;
+  width: 40px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  animation: float 10s linear infinite;
+}
+
+.credit-particle:nth-child(1) { top: 20%; left: 10%; animation-duration: 15s; animation-delay: 0s; }
+.credit-particle:nth-child(2) { top: 70%; left: 20%; animation-duration: 12s; animation-delay: 1s; }
+.credit-particle:nth-child(3) { top: 40%; left: 80%; animation-duration: 18s; animation-delay: 2s; }
+.credit-particle:nth-child(4) { top: 10%; left: 60%; animation-duration: 10s; animation-delay: 3s; }
+.credit-particle:nth-child(5) { top: 85%; left: 5%; animation-duration: 14s; animation-delay: 4s; }
+.credit-particle:nth-child(6) { top: 60%; left: 90%; animation-duration: 16s; animation-delay: 5s; }
+
+/* Card container with glassmorphism effect */
+.max-w-lg {
+  max-width: 32rem;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transform: translateY(0);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.max-w-lg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(0deg);
+  animation: cardShine 8s linear infinite;
+  pointer-events: none;
+}
+
+.max-w-lg:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.6);
+}
+
+/* Vibrant heading styles */
+h2 {
+  color: var(--dark);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+  letter-spacing: 1px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s infinite;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--primary-gradient);
+  border-radius: 4px;
+}
+
+h2::before {
+  content: '💳';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+}
+
+/* Input fields with rainbow focus effect */
+.space-y-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 4rem;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: var(--transition);
+  outline: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+input[type="number"]:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+  animation: borderRainbow 3s infinite;
+}
+
+input[type="number"]::placeholder {
+  color: #94a3b8;
+  transition: var(--transition);
+}
+
+input[type="number"]:focus::placeholder {
+  transform: translateX(10px);
+  opacity: 0.5;
+}
+
+/* Pulsating button with rainbow gradient */
+button {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+  animation: buttonPulse 3s infinite;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
+  background-size: 200% 200%;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.3) 50%, 
+    rgba(255,255,255,0) 100%);
+  transition: all 0.8s ease;
+  padding-left:7rem;
+}
+
+button:hover::after {
+  left: 100%;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  animation: none;
+}
+
+/* Result card with neon glow effect */
+.result {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  border-radius: 12px;
+  background-color: rgba(248, 250, 252, 0.9);
+  border-left: 4px solid var(--primary);
+  animation: fadeInUp 0.7s ease-out;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.result::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(99, 102, 241, 0) 0%, 
+    rgba(99, 102, 241, 0.05) 50%, 
+    rgba(99, 102, 241, 0) 100%);
+  animation: resultShine 5s infinite linear;
+}
+
+.result p {
+  margin: 0.75rem 0;
+  font-size: 1.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.result strong {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Error message with heartbeat animation */
+.error {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: rgba(254, 226, 226, 0.9);
+  color: var(--danger);
+  border-radius: 12px;
+  border-left: 4px solid var(--danger);
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both, heartBeat 1s 1s;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+/* Custom credit score category styling */
+.credit-excellent {
+  color: #15803d;
+  text-shadow: 0 0 10px rgba(21, 128, 61, 0.3);
+  font-size: 1.3rem;
+  animation: pulse 2s infinite;
+}
+
+.credit-good {
+  color: #0284c7;
+  text-shadow: 0 0 10px rgba(2, 132, 199, 0.3);
+  font-size: 1.25rem;
+  animation: pulse 2s infinite;
+}
+
+.credit-fair {
+  color: #ca8a04;
+  text-shadow: 0 0 10px rgba(202, 138, 4, 0.3);
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+.credit-poor {
+  color: #b91c1c;
+  text-shadow: 0 0 10px rgba(185, 28, 28, 0.3);
+  font-size: 1.15rem;
+  animation: pulse 2s infinite;
+}
+
+/* Loading overlay with particles */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4f46e5, #7e22ce);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite, colorChange 3s infinite;
+  position: relative;
+}
+
+.loading-spinner::before,
+.loading-spinner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.loading-spinner::before {
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 5px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  animation: spin 2s linear infinite reverse;
+}
+
+.loading-spinner::after {
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 5px dotted rgba(255, 255, 255, 0.6);
+  animation: spin 3s linear infinite;
+}
+
+.loading-text {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #f8fafc, #e0e7ff, #f8fafc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 2s linear infinite;
+}
+
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: dots 1.5s infinite;
+}
+
+/* Progress bar with liquid animation */
+.progress-container {
+  width: 100%;
+  height: 16px;
+  background-color: rgba(226, 232, 240, 0.6);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #7e22ce, #c026d3);
+  background-size: 200% 100%;
+  border-radius: 8px;
+  transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  animation: gradientFlow 3s ease infinite;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.4), 
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+  animation: liquidFlow 2s infinite linear;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.2) 10px,
+    rgba(255, 255, 255, 0.2) 20px
+  );
+  animation: liquidFlow 3s infinite linear;
+}
+
+/* Credit score legend with highlights */
+.score-legend {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(248, 250, 252, 0.5);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #475569;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.score-legend:hover {
+  background-color: rgba(248, 250, 252, 0.8);
+  transform: translateY(-2px);
+}
+
+.score-legend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.score-legend-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+.score-legend-item strong {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.score-exceptional { color: #15803d; }
+.score-excellent { color: #0284c7; }
+.score-good { color: #0369a1; }
+.score-fair { color: #ca8a04; }
+.score-poor { color: #b91c1c; }
+
+/* Advanced animations */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(3px); }
+  30%, 50%, 70% { transform: translateX(-5px); }
+  40%, 60% { transform: translateX(5px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes colorChange {
+  0% { border-top-color: white; }
+  33% { border-top-color: #22d3ee; }
+  66% { border-top-color: #a855f7; }
+  100% { border-top-color: white; }
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes buttonPulse {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+@keyframes borderRainbow {
+  0% { border-color: #6366f1; }
+  25% { border-color: #8b5cf6; }
+  50% { border-color: #d946ef; }
+  75% { border-color: #ec4899; }
+  100% { border-color: #6366f1; }
+}
+
+@keyframes textShimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes cardShine {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) translateX(-50%); }
+  50% { transform: translateY(-10px) translateX(-50%); }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes liquidFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes resultShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Credit score spotlight effect */
+.credit-score-value {
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  z-index: 2;
+}
+
+.credit-score-value::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: var(--primary-gradient);
+  border-radius: 8px;
+  z-index: -1;
+  opacity: 0.2;
+  animation: spotlight 3s infinite;
+}
+
+@keyframes spotlight {
+  0% { opacity: 0.1; transform: scale(0.95); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+  100% { opacity: 0.1; transform: scale(0.95); }
+}
+
+/* Loading indicator with breathing animation */
+.loading-indicator {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: breathe 3s infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .max-w-lg {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .score-legend {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .score-legend {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
